@@ -32,5 +32,9 @@ OnAppVoteClick( '41', '683320' );
 Output will be like this:  
 ![output image](sample_output.png)
 
+---
+
+[Video about how to use this](https://www.youtube.com/watch?v=5y8xr42ZjWo)
+
 # Something like license
 You're all free to copy, distribute, edit and do what you want with this but leave credits.
