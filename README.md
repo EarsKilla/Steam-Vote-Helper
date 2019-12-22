@@ -29,5 +29,5 @@ OnAppVoteClick( '41', '683320' );
 
 ---
 
-Output will be like this:
+Output will be like this:  
 ![output image](sample_output.png)
