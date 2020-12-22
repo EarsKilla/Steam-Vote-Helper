@@ -1,9 +1,9 @@
 # Steam vote helper
 
-This version will work only with `THE STEAM AWARDS`. 2019 year.
+This version will work only with `THE STEAM AWARDS`. 2020 year.
 
 1. Just open your favourite browser
-2. Navigate [here](https://store.steampowered.com/) and login if not yet logged in
+2. Navigate [here](https://store.steampowered.com/steamawards) and login if not yet logged in
 3. Open browser console (in most browsers it should be `F12` key on your keyboard)
 4. Copy following code to browser console and press `Enter`  
 ```js
@@ -17,14 +17,16 @@ function OnAppVoteClick(voteid, appid) {
 		console.log('Vote ' + voteid + ' for ' + appid + ' was FAILED');
 	}) 
 };
-OnAppVoteClick( '34', '814380' );
-OnAppVoteClick( '35', '620980' );
-OnAppVoteClick( '36', '230410' );
-OnAppVoteClick( '37', '632360' );
-OnAppVoteClick( '38', '736260' );
-OnAppVoteClick( '39', '752590' );
-OnAppVoteClick( '40', '629760' );
-OnAppVoteClick( '41', '683320' );
+OnAppVoteClick( '50', '1190460' );
+OnAppVoteClick( '51', '1019550' );
+OnAppVoteClick( '52', '275850' );
+OnAppVoteClick( '53', '397540' );
+OnAppVoteClick( '55', '1190460' );
+OnAppVoteClick( '58', '1151640' );
+OnAppVoteClick( '56', '1139900' );
+OnAppVoteClick( '54', '1238810' );
+OnAppVoteClick( '57', '782330' );
+OnAppVoteClick( '59', '837470' );
 ```
 
 ---
