@@ -7,32 +7,40 @@ This version will work only with `THE STEAM AWARDS`. 2020 year.
 3. Open browser console (in most browsers it should be `F12` key on your keyboard)
 4. Copy following code to browser console and press `Enter`  
 ```js
-if (g_bIsLimitedAccoun) {
-	ShowAlertDialog( 'Error', 'It appears that your account is limited. To prevent nomination abuse, you must spend $5 USD on Steam in order to participate in the Steam Awards. Visit <a href="https://support.steampowered.com/kb_article.php?ref=3330-IAGK-7663" target="_blank" rel="noreferrer">Steam Support</a> for more info.' );
-	return;
-}
-
 var sessionId = WebStorage.GetCookie("sessionid");
+var isAccountLimited = false;
 
 function OnAppVoteClick(categoryid, nominatedid, source) {
+    if (isAccountLimited) {
+        return;
+    }
+
 	$J
 	.post('https://store.steampowered.com/salevote', {sessionid: sessionId, categoryid: categoryid, nominatedid: nominatedid, source: source })
 	.done(function(data) {
-		console.info('Vote for ' + nominatedid + ' was succeed');
+        if(data[0] == 500 && data.success == 112) 
+        {
+           console.error("account limited");
+           isAccountLimited = true;
+        }
+        else
+        {
+           console.info('Vote for ' + nominatedid + ' was succeed');
+        }
 	})
 	.fail(function() {
 		console.error('Vote for ' + nominatedid + ' was FAILED');
 	}) 
 };
-OnAppVoteClick( '61', '1293830', '2' );
-OnAppVoteClick( '62', '752480', '3' );
-OnAppVoteClick( '63', '620', '2' );
-OnAppVoteClick( '64', '1293830', '2' );
-OnAppVoteClick( '65', '1293830', '2' );
-OnAppVoteClick( '66', '1091500', '2' );
-OnAppVoteClick( '67', '1293830', '2' );
-OnAppVoteClick( '68', '1091500', '2' );
-OnAppVoteClick( '69', '1091500', '2' );
+OnAppVoteClick( '61', '1465360', '2' );
+OnAppVoteClick( '62', '1740570', '3' );
+OnAppVoteClick( '63', '381210', '2' );
+OnAppVoteClick( '64', '1571170', '2' );
+OnAppVoteClick( '65', '1173010', '2' );
+OnAppVoteClick( '66', '1351630', '2' );
+OnAppVoteClick( '67', '848450', '2' );
+OnAppVoteClick( '68', '1000360', '2' );
+OnAppVoteClick( '69', '1551360', '2' );
 OnAppVoteClick( '70', '1293830', '2' );
 ```
 
