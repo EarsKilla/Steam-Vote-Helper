@@ -1,6 +1,6 @@
 # Steam vote helper
 
-This version will work only with `THE STEAM AWARDS`. 2020 year.
+This version will work only with `THE STEAM AWARDS`. 2021 year.
 
 1. Just open your favourite browser
 2. Navigate [here](https://store.steampowered.com/steamawards) and login if not yet logged in
@@ -10,34 +10,38 @@ This version will work only with `THE STEAM AWARDS`. 2020 year.
 var sessionId = WebStorage.GetCookie("sessionid");
 var isAccountLimited = false;
 
-function OnAppVoteClick(categoryid, nominatedid, source) {
+function OnAppVoteClick(voteid, appid, source) {
     if (isAccountLimited) {
         return;
     }
-
-    $J.post('https://store.steampowered.com/steamawards/nominategame', { sessionid: sessionId, categoryid: categoryid, nominatedid: nominatedid, source: source })
+    $J.post('https://store.steampowered.com/salevote', {
+            sessionid: sessionId,
+            voteid: voteid,
+            appid: appid,
+            source: source
+        })
         .done(function(data) {
-            if (data[0] == 500 && data.success == 112) {
+            if (data.startsWith("Ваш аккаунт не отвечает") || data.startsWith("Your account does")) {
                 console.error("account limited");
                 isAccountLimited = true;
             } else {
-                console.info('Vote for ' + nominatedid + ' was succeed');
+                console.info('Vote for ' + appid + ' was succeed');
             }
         })
         .fail(function() {
-            console.error('Vote for ' + nominatedid + ' was FAILED');
+            console.error('Vote for ' + appid + ' was FAILED');
         })
 };
-OnAppVoteClick('61', '1465360', '2');
-OnAppVoteClick('62', '1740570', '3');
-OnAppVoteClick('63', '381210', '2');
-OnAppVoteClick('64', '1571170', '2');
-OnAppVoteClick('65', '1173010', '2');
-OnAppVoteClick('66', '1351630', '2');
-OnAppVoteClick('67', '848450', '2');
-OnAppVoteClick('68', '1000360', '2');
-OnAppVoteClick('69', '1551360', '2');
-OnAppVoteClick('70', '1293830', '2');
+OnAppVoteClick('61', '1091500', '2');
+OnAppVoteClick('62', '1402320', '3');
+OnAppVoteClick('63', '252490', '2');
+OnAppVoteClick('64', '1240440', '2');
+OnAppVoteClick('65', '860510', '2');
+OnAppVoteClick('66', '1195290', '2');
+OnAppVoteClick('67', '1325200', '2');
+OnAppVoteClick('68', '1382330', '2');
+OnAppVoteClick('69', '1196590', '2');
+OnAppVoteClick('70', '1248130', '2');
 ```
 
 ---
