@@ -1,6 +1,6 @@
 # Steam vote helper
 
-This version will work only with `THE STEAM AWARDS`. 2021 year.
+This version will work only with `THE STEAM AWARDS`. 2022 year.
 
 1. Just open your favourite browser
 2. Navigate [here](https://store.steampowered.com/steamawards) and login if not yet logged in
