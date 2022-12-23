@@ -1,47 +1,48 @@
 # Steam vote helper
 
-This version will work only with `THE STEAM AWARDS`. 2021 year.
+This version will work only with `THE STEAM AWARDS`. 2022 year.
 
 1. Just open your favourite browser
 2. Navigate [here](https://store.steampowered.com/steamawards) and login if not yet logged in
 3. Open browser console (in most browsers it should be `F12` key on your keyboard)
 4. Copy following code to browser console and press `Enter`  
 ```js
-var sessionId = WebStorage.GetCookie("sessionid");
-var isAccountLimited = false;
+let sessionId = WebStorage.GetCookie("sessionid");
+let isAccountLimited = false;
 
-function OnAppVoteClick(voteid, appid, source) {
-    if (isAccountLimited) {
-        return;
-    }
-    $J.post('https://store.steampowered.com/salevote', {
-            sessionid: sessionId,
-            voteid: voteid,
-            appid: appid,
-            source: source
-        })
-        .done(function(data) {
-            if (data.startsWith("Ваш аккаунт не отвечает") || data.startsWith("Your account does")) {
-                console.error("account limited");
-                isAccountLimited = true;
-            } else {
-                console.info('Vote for ' + appid + ' was succeed');
-            }
-        })
-        .fail(function() {
-            console.error('Vote for ' + appid + ' was FAILED');
-        })
-};
-OnAppVoteClick('61', '1091500', '2');
-OnAppVoteClick('62', '1402320', '3');
-OnAppVoteClick('63', '252490', '2');
-OnAppVoteClick('64', '1240440', '2');
-OnAppVoteClick('65', '860510', '2');
-OnAppVoteClick('66', '1195290', '2');
-OnAppVoteClick('67', '1325200', '2');
-OnAppVoteClick('68', '1382330', '2');
-OnAppVoteClick('69', '1196590', '2');
-OnAppVoteClick('70', '1248130', '2');
+function OnAppVoteClick(voteid, appid, developerid) {
+  if (isAccountLimited) {
+    return;
+  }
+  $J.post("https://store.steampowered.com/salevote", {
+    sessionid: sessionId,
+    voteid: voteid,
+    appid: appid,
+    developerid: developerid,
+  })
+    .done(function (data) {
+      if (data.startsWith("Ваш аккаунт не отвечает") || data.startsWith("Your account does")) {
+        console.error("account limited");
+        isAccountLimited = true;
+      } else {
+        console.info("Vote for " + appid + " was succeed");
+      }
+    })
+    .fail(function () {
+      console.error("Vote for " + appid + " was FAILED");
+    });
+}
+OnAppVoteClick("72", "1245620", "0");
+OnAppVoteClick("73", "1659040", "0");
+OnAppVoteClick("74", "275850", "0");
+OnAppVoteClick("75", "1938090", "0");
+OnAppVoteClick("76", "1063660", "0");
+OnAppVoteClick("77", "261550", "0");
+OnAppVoteClick("78", "1811260", "0");
+OnAppVoteClick("79", "1761390", "0");
+OnAppVoteClick("80", "1593500", "0");
+OnAppVoteClick("81", "920210", "0");
+OnAppVoteClick("82", "1997040", "0");
 ```
 
 ---
